@@ -25,10 +25,7 @@ public class PhoneMain {
 				Butt.IPHONE,
 				Butt.GALAXY
 		};	
-		Phone phone = new Phone();
-		CellPhone cp = new CellPhone();
-		IPhone ip = new IPhone();
-		GalaxyPhone gl = new GalaxyPhone();
+		Phone phone = null; // 다형성
 		while(true) {
 			Butt select = (Butt)JOptionPane.showInputDialog(
 					null, //frame
@@ -51,27 +48,25 @@ public class PhoneMain {
 				JOptionPane.showMessageDialog(null, phone.toString());
 				break;
 			case CELPHONE:
-				cp = new CellPhone();
-				cp.setName(JOptionPane.showInputDialog("이름"));
-				cp.setPhoneNum(JOptionPane.showInputDialog("전화번호"));
-				cp.setCall(JOptionPane.showInputDialog("할말"));
-				JOptionPane.showMessageDialog(null, cp.toString());
+				 phone = new CellPhone();
+				 phone.setName(JOptionPane.showInputDialog("이름"));
+				 phone.setPhoneNum(JOptionPane.showInputDialog("전화번호"));
+				 phone.setCall(JOptionPane.showInputDialog("할말"));
+				JOptionPane.showMessageDialog(null,  phone.toString());
 				break;
 			case IPHONE:
-				ip = new IPhone();
-				ip.setName(JOptionPane.showInputDialog("이름"));
-				ip.setPhoneNum(JOptionPane.showInputDialog("전화번호"));
-				//ip.setCall(JOptionPane.showInputDialog("할말"));
-				ip.setData(JOptionPane.showInputDialog("데이터"));
-				JOptionPane.showMessageDialog(null, ip.toString());
+				 phone = new IPhone();
+				 phone.setName(JOptionPane.showInputDialog("이름"));
+				 phone.setPhoneNum(JOptionPane.showInputDialog("전화번호"));
+				 ((IPhone) phone).setData(JOptionPane.showInputDialog("데이터"));
+				JOptionPane.showMessageDialog(null, phone.toString());
 				break;
 			case GALAXY:
-				gl = new GalaxyPhone();
-				gl.setName(JOptionPane.showInputDialog("이름"));
-				gl.setPhoneNum(JOptionPane.showInputDialog("전화번호"));
-				gl.setSize(JOptionPane.showInputDialog("사이즈"));
-				gl.setData(JOptionPane.showInputDialog("데이터"));
-				JOptionPane.showMessageDialog(null, gl.toString());
+				 phone = new GalaxyPhone();
+				 phone.setName(JOptionPane.showInputDialog("이름"));
+				 phone.setPhoneNum(JOptionPane.showInputDialog("전화번호"));
+				 ((IPhone) phone).setData(JOptionPane.showInputDialog("데이터"));
+				JOptionPane.showMessageDialog(null, phone.toString());
 				break;
 			default :
 				JOptionPane.showMessageDialog(null, "eeror");

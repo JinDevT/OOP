@@ -9,7 +9,7 @@ public class GalaxyPhone extends IPhone {
 	//안녕이라고 카톡했다.
 	//data를 오버라이딩하세요.
 	public void setSize(String size) {
-		this.size = size;
+		this.size = "6";
 	}
 	public void setData(String data) {
 		super.data = data+"이라고 카톡했다";

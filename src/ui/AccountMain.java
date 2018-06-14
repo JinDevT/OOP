@@ -21,7 +21,9 @@ import domain.MinusAccount;
 enum Butta{
 	EXIT,
 	ACCOUNT_TYPE,
-	MINUSACCOUNT_TYPE
+	MINUSACCOUNT_TYPE,
+	DEPOSIT,
+	WITHDRAW
 	;
 }
 public class AccountMain {
@@ -30,11 +32,14 @@ public class AccountMain {
 		Butta[] buttons = {
 				Butta.EXIT,
 				Butta.ACCOUNT_TYPE,
-				Butta.MINUSACCOUNT_TYPE
+				Butta.MINUSACCOUNT_TYPE,
+				Butta.DEPOSIT,
+				Butta.WITHDRAW
 				
 		};	
-		Account cnt = new Account();
-		MinusAccount mcnt = new MinusAccount(); 
+		Account cnt = null;
+
+		
 		while(true) {
 			Butta select = (Butta)JOptionPane.showInputDialog(
 					null, //frame
@@ -47,26 +52,41 @@ public class AccountMain {
 			switch(select) {
 			case EXIT: JOptionPane.showMessageDialog(null,"종료되었습니다."); return;
 			case ACCOUNT_TYPE:
-				cnt = new Account();
-				cnt.setUid(JOptionPane.showInputDialog("ID입력"));
-				cnt.setPass(JOptionPane.showInputDialog("PASSWORD 입력"));
-				cnt.setName(JOptionPane.showInputDialog("이름"));
-				cnt.setAccountNo();
-				cnt.setCreateDate();
-				cnt.setMoney(Integer.parseInt(JOptionPane.showInputDialog("잔액")));
+				cnt = new Account(
+						JOptionPane.showInputDialog("이름"),
+						JOptionPane.showInputDialog("ID입력"),
+						JOptionPane.showInputDialog("PASSWORD 입력")
+						);
+//				cnt.setUid(JOptionPane.showInputDialog("ID입력"));
+//				cnt.setPass(JOptionPane.showInputDialog("PASSWORD 입력"));
+//				cnt.setName(JOptionPane.showInputDialog("이름"));
+				//cnt.setAccountNo(); //공개되면 안되는 값은 은닉화한다.
+				//cnt.setCreateDate();
+			//	cnt.setDeposit(Integer.parseInt(JOptionPane.showInputDialog("입금금액")));
 				
 				JOptionPane.showMessageDialog(null,cnt.toString());
 				break;
 			case MINUSACCOUNT_TYPE:
-				mcnt = new MinusAccount();
-				mcnt.setUid(JOptionPane.showInputDialog("ID입력"));
-				mcnt.setPass(JOptionPane.showInputDialog("PASSWORD 입력"));
-				mcnt.setName(JOptionPane.showInputDialog("이름"));
-				mcnt.setAccountNo();
-				mcnt.setCreateDate();
-				mcnt.setDebt(Integer.parseInt(JOptionPane.showInputDialog("잔액")));
+				cnt = new MinusAccount(
+						JOptionPane.showInputDialog("이름"),
+						JOptionPane.showInputDialog("ID입력"),
+						JOptionPane.showInputDialog("PASSWORD 입력")
+						);
+				cnt.setMoney(Integer.parseInt(JOptionPane.showInputDialog("대출금")));
+				cnt.setMoney(Integer.parseInt(JOptionPane.showInputDialog("대출금액")));
 				
-				JOptionPane.showMessageDialog(null,mcnt.toString());
+				JOptionPane.showMessageDialog(null,cnt.toString());
+				break;
+			case DEPOSIT:
+				cnt.setMoney(Integer.parseInt(JOptionPane.showInputDialog("입금금액")));
+				JOptionPane.showMessageDialog(null, cnt.getMoney());
+				break;
+			case WITHDRAW:
+				int money =0;
+				cnt.setMoney(Integer.parseInt(JOptionPane.showInputDialog("출금금액")));
+				//if(cnt) {}else {}
+				JOptionPane.showMessageDialog(null, cnt.getMoney());
+				
 				break;
 			}
 		}

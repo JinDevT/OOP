@@ -1,16 +1,31 @@
 package domain;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+
+import javax.swing.JOptionPane;
 public class Account {
 	public static final String BANK_NAME="비트뱅크";
 	public final static String ACCOUNT_TYPE="기본통장";
-	protected String uid,pass,name,createDate,accountNo;
-	protected int money;
+	protected String uid,pass,name,createDate,accountNo,accountType;
+	protected int money,deposit,withdraw;
 	
 
-	
-	public void setUid(String uid) {
+	public Account(String name,String uid, String pass) { //외부에 노출 안되는 메소드
+		setAccountType(ACCOUNT_TYPE);
+		setAccountNo();
+		setCreateDate();
+		this.name = name;
 		this.uid = uid;
+		this.pass = pass;
+	}
+	public void setDeposit(int deposit) {
+		money += deposit;
+	}
+	public void setWithdraw(int withdraw) {
+		money -= withdraw;
+	}
+	public void setAccountType(String accountType) {
+		this.accountType = accountType;
 	}
 	public void setPass(String pass) {
 		this.pass = pass;
@@ -27,35 +42,39 @@ public class Account {
 		
 		accountNo = result;
 	}
-	public void setName(String name) {
-		this.name = name;
-	}
+	
+	
 	public void setCreateDate() {
-		Date today = new Date();
+		//Date today = new Date();
+		//SimpleDateFormat date = new SimpleDateFormat("yyyy년MM월dd일");
 		
-		SimpleDateFormat date = new SimpleDateFormat("yyyy년MM월dd일");
-		createDate = date.format(today);
+		createDate = new SimpleDateFormat("yyyy년MM월dd일").format(new Date());
 	}
 	public void setMoney(int money) {
 		this.money = money;
 	}
-	public String getUid() {
-		return uid;
+	public String getAccountType() {
+		return accountType;
 	}
+	
 	public String getPass() {
 		return pass;
 	}
 	public String getAccountNo() {
 		return accountNo;
 	}
-	public String getName() {
-		return name;
-	}
+	
 	public String getCreateDate() {
 		return createDate;
 	}
 	public int getMoney() {
 		return money;
+	}
+	public int getDeposit() {
+		return deposit;
+	}
+	public int getWithdraw() {
+		return withdraw;
 	}
 	public String toString() {
 		
@@ -63,7 +82,7 @@ public class Account {
 				BANK_NAME,
 				ACCOUNT_TYPE,
 				getAccountNo(),
-				getName(),
+				name,
 				getCreateDate(),
 				getMoney());
 				
