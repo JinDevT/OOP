@@ -45,7 +45,7 @@ public class AccountMain {
 					buttons, // Array of choices
 					buttons[1]); //default
 			switch(select) {
-			case EXIT: JOptionPane.showMessageDialog(null,"종료되었습니다.");
+			case EXIT: JOptionPane.showMessageDialog(null,"종료되었습니다."); return;
 			case ACCOUNT_TYPE:
 				cnt = new Account();
 				cnt.setUid(JOptionPane.showInputDialog("ID입력"));

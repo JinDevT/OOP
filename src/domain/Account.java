@@ -18,19 +18,14 @@ public class Account {
 	
 	public void setAccountNo() {
 		String result = "";
-		
 		for(int i =0; i<3; i++) {
 			for(int j =0; j<3; j++) {
 				result+=(int)(Math.random()*9)+1;
 			}
-			if(i==2) {
-			result+="";
-			}else {
-			result+="-";
-			}
-			
+			result+=(i==2)?"":"-";
 		}
-		this.accountNo = result;
+		
+		accountNo = result;
 	}
 	public void setName(String name) {
 		this.name = name;
@@ -39,7 +34,7 @@ public class Account {
 		Date today = new Date();
 		
 		SimpleDateFormat date = new SimpleDateFormat("yyyy년MM월dd일");
-		this.createDate = date.format(today);
+		createDate = date.format(today);
 	}
 	public void setMoney(int money) {
 		this.money = money;
@@ -64,7 +59,7 @@ public class Account {
 	}
 	public String toString() {
 		
-		return String.format("%s\n %s\n 계좌번호: %s\n 이름: %s\n 생성일: %s\n 잔액: %d\n",
+		return String.format("%s\n %s\n 계좌번호: %s\n 이름: %s\n 생성일: %s\n 잔액: %d원\n",
 				BANK_NAME,
 				ACCOUNT_TYPE,
 				getAccountNo(),

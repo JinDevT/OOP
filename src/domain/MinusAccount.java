@@ -13,7 +13,7 @@ public class MinusAccount extends Account {
 	}
 public String toString() {
 		
-		return String.format("%s\n %s\n 계좌번호: %s\n 이름: %s\n 생성일: %s\n 금액: -%d\n",
+		return String.format("%s\n %s\n 계좌번호: %s\n 이름: %s\n 생성일: %s\n 금액: -%d원\n",
 				BANK_NAME,
 				ACCOUNT_TYPE,
 				super.getAccountNo(),
