@@ -20,7 +20,7 @@ public class Account {
 		String result = "";
 		for(int i =0; i<3; i++) {
 			for(int j =0; j<3; j++) {
-				result+=(int)(Math.random()*9);
+				result+=(int)(Math.random()*10);
 			}
 			result+=(i==2)?"":"-";
 		}
