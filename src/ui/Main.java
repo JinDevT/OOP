@@ -100,13 +100,13 @@ public class Main {
 				JOptionPane.showMessageDialog(null, output2);
 				break;
 			case 5:
-				salary = new Salary();
-				
-				salary.setDept(JOptionPane.showInputDialog("부서"));
-				salary.setName(JOptionPane.showInputDialog("이름"));
-				salary.setSal(Integer.parseInt(JOptionPane.showInputDialog("본봉")));
-				salary.setBonus(Integer.parseInt(JOptionPane.showInputDialog("수당")));
-				
+//				salary = new Salary();
+//				
+//				salary.setDept(JOptionPane.showInputDialog("부서"));
+//				salary.setName(JOptionPane.showInputDialog("이름"));
+//				salary.setSal(Integer.parseInt(JOptionPane.showInputDialog("본봉")));
+//				salary.setBonus(Integer.parseInt(JOptionPane.showInputDialog("수당")));
+//				
 				crr[count] = salary;
 				count++;
 				break;

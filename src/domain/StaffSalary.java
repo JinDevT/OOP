@@ -7,6 +7,7 @@ public class StaffSalary extends Salary {
 	
 	public StaffSalary(String name, int sal) {
 		super(name, sal);
+		//super.name - > 부모안에있는 속성.
 		setDept(DEPT);
 		setBonus();
 	}
@@ -14,15 +15,15 @@ public class StaffSalary extends Salary {
 		bonus = sal*10/100;
 	}
 	public void setDept(String dept) {
-		this.dept = dept;
+		this.dept = dept.substring(1,3);
 	}
 	public String getDept() {
 		return dept;
 	}
-	public int getBonus() {
-		return bonus;
-	}
+//	public int getBonus() {
+//		return bonus;
+//	}
 	public String toString() {
-		return String.format("%s직원 %d만원 지급",name,bonus);
+		return String.format("%s%s %d만원 지급",name,dept,bonus+sal);
 	}
 }

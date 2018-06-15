@@ -26,7 +26,7 @@ enum Butta{
 	WITHDRAW
 	;
 }
-public class AccountMain {
+public class AccountMainOld {
 
 	public static void main(String[] args) {
 		Butta[] buttons = {
@@ -72,23 +72,40 @@ public class AccountMain {
 						JOptionPane.showInputDialog("ID입력"),
 						JOptionPane.showInputDialog("PASSWORD 입력")
 						);
-				cnt.setMoney(Integer.parseInt(JOptionPane.showInputDialog("대출금")));
-				cnt.setMoney(Integer.parseInt(JOptionPane.showInputDialog("대출금액")));
-				
-				JOptionPane.showMessageDialog(null,cnt.toString());
+				((MinusAccount) cnt).setLimit(Integer.parseInt(JOptionPane.showInputDialog("대출한도 설정")));
+				JOptionPane.showMessageDialog(null, cnt.toString());
 				break;
-			case DEPOSIT:
-				cnt.setMoney(Integer.parseInt(JOptionPane.showInputDialog("입금금액")));
-				JOptionPane.showMessageDialog(null, cnt.getMoney());
-				break;
-			case WITHDRAW:
-				int money =0;
-				cnt.setMoney(Integer.parseInt(JOptionPane.showInputDialog("출금금액")));
-				//if(cnt) {}else {}
-				JOptionPane.showMessageDialog(null, cnt.getMoney());
+			case DEPOSIT :
+				cnt.setDeposit(Integer.parseInt(JOptionPane.showInputDialog("얼마 입금하시겠어요?")));
+				JOptionPane.showMessageDialog(null, "잔액 : "+cnt.getMoney());
 				
 				break;
+			case WITHDRAW : 
+				int money=0;
+				if(((MinusAccount) cnt).getLimit()!=0) {
+					money = Integer.parseInt(JOptionPane.showInputDialog("얼마를 출금하시겠습니까?"));
+					if(money>((MinusAccount) cnt).getLimit()) {
+						//출금성공
+						cnt.setWithdraw(money);
+					}else {
+						//출금불가
+						JOptionPane.showInternalMessageDialog(null, "출금 불가");break;
+					}
+				}else {
+					if(money>((MinusAccount) cnt).getMoney()) {
+						//출금성공
+					cnt.setDeposit(money);
+					}else {
+						//출금불가
+						JOptionPane.showMessageDialog(null, "출금 불가");break;
+					}
+						
+				}
+				JOptionPane.showMessageDialog(null, "잔액 : "+cnt.getMoney());
+				break;
+		
 			}
+			
 		}
 
 	}

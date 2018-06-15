@@ -5,22 +5,22 @@ public class Salary {
 	protected String dept,name;
 	int sal;
 	public Salary(String name,int sal) {
-		this.name = name.substring(0,1)+DEPT;
+		this.name = name.substring(0,1);
 		this.sal =sal;
 		setDept(DEPT);
 		
 	}
 	public void setDept(String dept) {
-		this.dept = dept;
+		this.dept = dept.substring(0,2);
 	}
 	public String getDept() {
 		return dept;
 	}
-	public String getName() {
-		return name;
+	public void setName(int sal) {
+		this.sal = sal;
 	}
 	public String toString() {
-		return String.format("%s인턴 %d만원 지급",name,sal);
+		return String.format("%s%s %d만원 지급",name,dept,sal);
 	}
 }
 
